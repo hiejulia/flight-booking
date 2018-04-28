@@ -110,6 +110,10 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -201,7 +205,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<configuration>
-					<phase>integration-test</phase>
+					<!--<phase>integration-test</phase>-->
 					<groups>com.packtpub.mmj.user.resources.docker.DockerIntegrationTest</groups>
 					<systemPropertyVariables>
 						<service.url>http://${docker.host.address}:${docker.port}/</service.url>
