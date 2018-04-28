@@ -8,7 +8,7 @@ Online flight reservation system
 
 
 ### Stack 
-+ Microservice architecture : Spring cloud, Netflix Eureka, 
++ Microservice architecture : Spring cloud, Netflix Eureka, Ribbon, Zuul, Hystrix, Service discovery, Load Balancing, API gateway, Circuit breaker 
 + Spring framework 
 
 + Database : PostgreSQL, MongoDB, Cassandra, 
@@ -19,7 +19,8 @@ Online flight reservation system
 + Container: Docker 
 
 + REST API testing using Postman
-
++ Testing : JUnit, E2E test with Cucumber
++ Event - driven system 
 
 
 
@@ -28,3 +29,14 @@ Online flight reservation system
     + GET `v1/flights/id` : get one flight by id 
     + GET `v1/flights` : retrieve all the flights that matches the value of query param 
     + POST `v1/flights` : create new flight 
+
+
+
+
+
+### Run the project 
+
+java -jar eureka-service/target/eureka-service.jar
+java -jar fligth-service/target/flight-service.jar
+java -jar booking-service/target/booking-service.jar
+java -jar user-service/target/user-service.jar
