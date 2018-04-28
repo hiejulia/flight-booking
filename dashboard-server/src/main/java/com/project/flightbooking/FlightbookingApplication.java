@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @EnableHystrixDashboard
 public class FlightbookingApplication extends SpringBootServletInitializer {
 
-		@RequestMapping("/")
+	@RequestMapping("/")
 	public String home() {
 		return "forward:/hystrix";
 	}
