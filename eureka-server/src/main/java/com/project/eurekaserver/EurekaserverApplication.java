@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @Configuration
-@EnableEurekaServer
+@EnableEurekaServer // enable eureka server 
 @EnableAutoConfiguration
 public class EurekaserverApplication {
 
