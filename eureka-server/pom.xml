@@ -23,6 +23,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.RC1</spring-cloud.version>
+		<docker.registry.name>localhost:5000/</docker.registry.name>
+		<docker.repository.name>${docker.registry.name}sourabhh/${project.artifactId}</docker.repository.name>
+		<docker.host.address>192.168.99.100</docker.host.address>
+		<docker.port>8761</docker.port>
 	</properties>
 
 	<dependencies>
@@ -49,6 +53,34 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-netflix-eureka-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0-b170201.1204</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.0-b170127.1453</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -68,6 +100,54 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jolokia</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.13.7</version>
+				<configuration>
+					<sourceDirectory>../docker</sourceDirectory>
+					<images>
+						<image>
+							<name>${docker.repository.name}:${project.version}</name>
+							<alias>${project.artifactId}</alias>
+							<build>
+								<from>java:8-jre</from>
+								<maintainer>sourabhh</maintainer>
+								<assembly>
+									<descriptor>docker-assembly.xml</descriptor>
+								</assembly>
+								<ports>
+									<port>${docker.port}</port>
+								</ports>
+								<cmd>
+									<shell>java -Dspring.profiles.active="docker" -jar \
+										/maven/${project.build.finalName}.jar server \
+										/maven/docker-config.yml</shell>
+								</cmd>
+							</build>
+							<run>
+								<namingStrategy>alias</namingStrategy>
+								<ports>
+									<port>${docker.port}:8761</port>
+								</ports>
+								<volumes>
+									<bind>
+										<volume>${user.home}/logs:/logs</volume>
+									</bind>
+								</volumes>
+								<wait>
+									<url>http://${docker.host.address}:${docker.port}/</url>
+									<time>500000</time>
+								</wait>
+								<log>
+									<prefix>${project.artifactId}</prefix>
+									<color>cyan</color>
+								</log>
+							</run>
+						</image>
+					</images>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
