@@ -36,7 +36,30 @@ Online flight reservation system
 
 ### Run the project 
 
-java -jar eureka-service/target/eureka-service.jar
-java -jar fligth-service/target/flight-service.jar
-java -jar booking-service/target/booking-service.jar
-java -jar user-service/target/user-service.jar
+java -jar eureka-server/target/eureka-server.jar 
+java -jar turbine-server/target/turbine-server.jar 
+java -jar dashboard-server/target/dashboard-server.jar 
+java -jar flight-service/target/restaurant-service.jar 
+java -jar user-service/target/user-service.jar 
+java -jar booking-service/target/booking-service.jar 
+java -jar api-service/target/api-service.jar
+
++ Before start Zuul service, make sure that all of the services are up in the Eureka dashboad : `localhost:8761`
+java -jar zuul-server/target/zuul-server.jar 
+
+
+
+
+
+### Microservice architecture 
++ Service discovery and registration 
++ Edge or proxy server (API gateway) - Zuul 
++ Load balancing : Ribbon is used for load balancing . It is integrated with the Zuul and Eureka services to provide load balancing for both internal and external calls 
+    + Server side load balancing : Zuul server as edge server 
+    + Client side load balancing : Ribbon - FeignClient 
++ Circuit breaker : Netflix hystrix 
++ Monitoring : Netflix Turbine 
+    + Hystrix provides a dashboard UI `locahost:7979`
+    + Turbine stream `http://localhost:8989/turbine.stream`
+    + Hystrix uses RabbitMQ to send metrics data feed to Turbine 
++ Eureka server : `http://localhost:8761/`
