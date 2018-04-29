@@ -86,3 +86,6 @@ java -jar zuul-server/target/zuul-server.jar
     + User search for flight by flight route and flight city
 + Notification service 
     + Notification is send to user when user book a flight 
++ Ticker order service : before book for ticker, user can choose to order (reserve the flight ticker in a certain of time )
++ Payment service : After sending bill to user(customer), payment service is used for pay the fee of the flight ticket 
++ third party payment service 
