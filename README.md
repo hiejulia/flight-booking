@@ -9,10 +9,10 @@ Online flight reservation system
 
 ### Stack 
 + Microservice architecture : Spring cloud, Netflix Eureka, Ribbon, Zuul, Hystrix, Service discovery, Load Balancing, API gateway, Circuit breaker 
-+ Spring framework 
++ Spring framework : Spring Boot, Spring cloud, Spring data, Spring Stream 
 
 + Database : PostgreSQL, MongoDB, Cassandra, 
-+ Messaging system : Kafka/ RabbitMQ 
++ Messaging system : Apache Kafka/ RabbitMQ 
 + Batch process 
 + Apache Avro
 + ElasticSearch - Logstash - Kibana 
@@ -21,6 +21,7 @@ Online flight reservation system
 + REST API testing using Postman
 + Testing : JUnit, E2E test with Cucumber
 + Event - driven system 
++ Security 
 
 
 
@@ -63,3 +64,25 @@ java -jar zuul-server/target/zuul-server.jar
     + Turbine stream `http://localhost:8989/turbine.stream`
     + Hystrix uses RabbitMQ to send metrics data feed to Turbine 
 + Eureka server : `http://localhost:8761/`
+
++ Security: 
+    + Secure microservices architecture 
+    + SSL enabled 
+
+
+
+
+
+
+
+
+### Project architecture
++ Flight service    
+    + User search for 
++ User service
++ Booking service 
++ Billing service 
++ Route service 
+    + User search for flight by flight route and flight city
++ Notification service 
+    + Notification is send to user when user book a flight 
