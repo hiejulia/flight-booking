@@ -5,6 +5,12 @@ spring:
   # Added to fix -  java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut hystrixCommandAnnotationPointcut
   aop:
       auto: false
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 
 # Map the error path to error template (for Thymeleaf)
 error:
@@ -18,4 +24,9 @@ eureka:
 
 # HTTP Server
 server:
-  port: 0   # HTTP (Tomcat) port
+  port: 8086   # HTTP (Tomcat) port
+
+custom:
+  fare:
+    service:
+      url: http://localhost:8085/fares
