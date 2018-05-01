@@ -9,9 +9,10 @@ Online flight reservation system
 
 ### Stack 
 + Microservice architecture : Spring cloud, Netflix Eureka, Ribbon, Zuul, Hystrix, Service discovery, Load Balancing, API gateway, Circuit breaker 
-+ Spring framework : Spring Boot, Spring cloud, Spring data, Spring Stream 
-
-+ Database : PostgreSQL, MongoDB, Cassandra, 
++ Spring framework : Spring Boot, Spring cloud, Spring data, Spring Stream , Spring Reactor
++ CQRS - Event sourcing 
++ Database : PostgreSQL, MongoDB, Cassandra, MySQL, Neo4J , 
++ Caching : Redis, 
 + Messaging system : Apache Kafka/ RabbitMQ 
 + Batch process 
 + Apache Avro
@@ -22,7 +23,7 @@ Online flight reservation system
 + Testing : JUnit, E2E test with Cucumber
 + Event - driven system 
 + Security 
-
++ Log analysis : ELK stack
 
 
 ### Endpoint documentation 
@@ -79,7 +80,12 @@ java -jar zuul-server/target/zuul-server.jar
 ### Project architecture
 + Flight service    
     + User search for 
-+ User service
++ Catalog service 
+
++ User service - Account service 
+    + User/ Customer register account
+    + Database : MySQL 
++ Account service 
 + Booking service 
 + Billing service 
 + Route service 
