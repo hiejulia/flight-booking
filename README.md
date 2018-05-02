@@ -38,7 +38,7 @@ Online flight reservation system
 
 ### Run the project 
 
-+ `docker-compose up` : RabbitMQ port set up 
++ `docker-compose up` : RabbitMQ port set up (in the docker folder) : it will start the RabbitMQ and MongoDB instance 
 
 java -jar eureka-server/target/eureka-server.jar 
 java -jar turbine-server/target/turbine-server.jar 
