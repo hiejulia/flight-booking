@@ -1,6 +1,8 @@
 package com.project.flightbooking.domain;
 
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,11 @@ public class Airport extends BaseEntity<String> {
 
     private List<Flight> flights = new ArrayList<>();
 
+    @JsonProperty("city")
     private String city;
+
+    @JsonProperty("code")
+    private String code;
 
     public String getCity() {
         return city;
