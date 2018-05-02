@@ -38,6 +38,8 @@ Online flight reservation system
 
 ### Run the project 
 
++ `docker-compose up` : RabbitMQ port set up 
+
 java -jar eureka-server/target/eureka-server.jar 
 java -jar turbine-server/target/turbine-server.jar 
 java -jar dashboard-server/target/dashboard-server.jar 
@@ -79,7 +81,7 @@ java -jar zuul-server/target/zuul-server.jar
 
 ### Project architecture
 + Flight service    
-    + User search for 
+    + User search for flight based on search query 
 + Catalog service 
 
 + User service - Account service 
@@ -87,7 +89,12 @@ java -jar zuul-server/target/zuul-server.jar
     + Database : MySQL 
 + Account service 
 + Booking service 
+    + User book the flight and fill needed information for the flight 
 + Billing service 
+    + User pay for flight ticket 
+
++ Subscription service 
+    + Use
 + Route service 
     + User search for flight by flight route and flight city
 + Notification service 
@@ -95,3 +102,7 @@ java -jar zuul-server/target/zuul-server.jar
 + Ticker order service : before book for ticker, user can choose to order (reserve the flight ticker in a certain of time )
 + Payment service : After sending bill to user(customer), payment service is used for pay the fee of the flight ticket 
 + third party payment service 
+
++ Credit risk engine :  
+    + Service to test for the validity of the bank account 
+    
