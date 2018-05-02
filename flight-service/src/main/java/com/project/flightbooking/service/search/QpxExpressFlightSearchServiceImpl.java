@@ -6,19 +6,22 @@ import com.project.flightbooking.dto.QpxExpressFlightSearchResult;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
-
+@Service
 public class QpxExpressFlightSearchServiceImpl implements QpxExpressFlightSearchService {
 
     private String apiKey;
 
+//    @Value()// Add value here
     private String qpxExpressUrl;
 
     private FlightSearchInput flightSearchInput;
@@ -77,7 +80,6 @@ public class QpxExpressFlightSearchServiceImpl implements QpxExpressFlightSearch
         // send request and parse result
         RestTemplate restTemplate = new RestTemplate();
 
-        System.out.println("Start flight search");
         long startTime = System.currentTimeMillis();
 
         ResponseEntity<QpxExpressFlightSearchResult> searchResult = restTemplate.exchange(qpxExpressUrl + apiKey,

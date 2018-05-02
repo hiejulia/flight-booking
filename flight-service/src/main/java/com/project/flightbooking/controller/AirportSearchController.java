@@ -4,6 +4,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import com.project.flightbooking.dto.AirportIata;
+import com.project.flightbooking.dto.FlightSearchInput;
+import com.project.flightbooking.dto.QpxExpressFlightSearchResult;
 import com.project.flightbooking.service.search.AirportSearchByGeoService;
 import com.project.flightbooking.service.search.QpxExpressFlightSearchService;
 import org.slf4j.Logger;
@@ -34,32 +37,30 @@ public class AirportSearchController {
     private AirportSearchByGeoService airportIataSearchService;
 
     /**
-     * Simply selects the home view to render by returning its name.
+     * search for flight
+     * @param input
+     * @return
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(Locale locale, Model model) {
-        logger.info("Welcome home! The client locale is {}.", locale);
-
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-        String formattedDate = dateFormat.format(date);
-
-        model.addAttribute("serverTime", formattedDate);
-
-        return "home";
-    }
-
     @RequestMapping(value = "/flights", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody QpxExpressFlightSearchResult search(@RequestBody FlightSearchInput input) {
-
+    public @ResponseBody
+    QpxExpressFlightSearchResult search(@RequestBody FlightSearchInput input) {
+        // Set search input
         flightSearchService.setFlightSearchInput(input);
+        // implement search service
         QpxExpressFlightSearchResult flightResults = flightSearchService.search();
+        // return the result
         return flightResults;
     }
 
+    /**
+     * Search for airport by lat and long
+     * @param lat
+     * @param log
+     * @return
+     */
     @RequestMapping(value = "/airportIataCode", method = RequestMethod.GET)
-    public @ResponseBody AirportIata airportIataCode(@RequestParam("lat") String lat, @RequestParam("log") String log) {
+    public @ResponseBody
+    AirportIata airportIataCode(@RequestParam("lat") String lat, @RequestParam("log") String log) {
 
         return airportIataSearchService.search(lat, log);
     }
