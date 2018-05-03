@@ -63,6 +63,10 @@
 			<artifactId>spring-cloud-starter-hystrix</artifactId>
 			<version>1.4.4.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bus-amqp -->
 		<dependency>

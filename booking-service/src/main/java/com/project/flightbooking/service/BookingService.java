@@ -4,6 +4,7 @@ package com.project.flightbooking.service;
 
 
 import java.awt.print.Book;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -19,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class BookingService {
+    // Tax rate in Finland
+    private static final Double TAX_RATE = 0.0925;
 
 
     @Autowired
@@ -65,4 +68,14 @@ public class BookingService {
     public Collection<Booking> findByCriteria(Map<String, ArrayList<String>> name) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+
+    // Keep two decimal places and round half up for tax
+    private Double doubleFormat(Double num) {
+        BigDecimal bigDecimal = new BigDecimal(num);
+        return bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
+
 }

@@ -11,14 +11,13 @@ Online flight reservation system
 + Microservice architecture : Spring cloud, Netflix Eureka, Ribbon, Zuul, Hystrix, Service discovery, Load Balancing, API gateway, Circuit breaker 
 + Spring framework : Spring Boot, Spring cloud, Spring data, Spring Stream , Spring Reactor
 + CQRS - Event sourcing 
-+ Database : PostgreSQL, MongoDB, Cassandra, MySQL, Neo4J , 
-+ Caching : Redis, 
-+ Messaging system : Apache Kafka/ RabbitMQ 
++ Database : PostgreSQL, MongoDB, Cassandra, MySQL, Neo4J , MySQL
++ Caching : Redis
++ Messaging system : RabbitMQ 
 + Batch process 
 + Apache Avro
 + ElasticSearch - Logstash - Kibana 
 + Container: Docker 
-
 + REST API testing using Postman
 + Testing : JUnit, E2E test with Cucumber
 + Event - driven system 
@@ -31,7 +30,17 @@ Online flight reservation system
     + GET `v1/flights/id` : get one flight by id 
     + GET `v1/flights` : retrieve all the flights that matches the value of query param 
     + POST `v1/flights` : create new flight 
+    + GET `v1/airports` : get a list of airports
+    + GET `v1/airports/{airport-name}` : list of flights from this airport 
 
++ Booking service : User can book a flight ticket and fill the personal information - billing information 
+    + POST `v1/flights/{flight-id}/booking ` : 
+
++ Billing service : User can pay the flight order 
+    + GET `v1/flights/{flight-id}/payment`
+
++ User can unsubscribe to the flight ticket info
+    + GET `v1/flights/{flight-id}/payment/ubsubscribed`
 
 
 
@@ -40,9 +49,10 @@ Online flight reservation system
 
 + `docker-compose up` : RabbitMQ port set up (in the docker folder) : it will start the RabbitMQ and MongoDB instance 
 
-java -jar eureka-server/target/eureka-server.jar 
+java -jar eureka-server/target/eureka-server.jar  : Start Eureke server  -  Eureka server port set up
+java -jar dashboard-server/target/dashboard-server.jar : Start Hystrix dashboard - Hystrix port set up 
 java -jar turbine-server/target/turbine-server.jar 
-java -jar dashboard-server/target/dashboard-server.jar 
+
 java -jar flight-service/target/restaurant-service.jar 
 java -jar user-service/target/user-service.jar 
 java -jar booking-service/target/booking-service.jar 
@@ -50,6 +60,21 @@ java -jar api-service/target/api-service.jar
 
 + Before start Zuul service, make sure that all of the services are up in the Eureka dashboad : `localhost:8761`
 java -jar zuul-server/target/zuul-server.jar 
+
+
+
++ How to double check all components are setting up 
+1. Browser : Eureka server 
+`http://localhost:8761/`
+Service instances are register with Eureka 
+
+
+2. Browser : Hystrix monitor : `http://localhost:7979/ ` - Hystrix dashboard 
++ Substitude : [http://hostname:port/turbine/turbine.stream] to
+                    URL:  http://localhost:9001/hystrix.stream
+         --> Monitor Stream
+
+3. Browser : RabbitMQ management : `http://localhost:15672/` (guest- guest )
 
 
 

@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookingRecordRepository extends JpaRepository<BookingRecord, Long> {
 
+    // Find one booking record by id
+
+
 }
