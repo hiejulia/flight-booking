@@ -33,12 +33,13 @@ public class BookingDeliveryRequestService{
     // if sendOrderDeliveryRequest() has error, then call sendOrderDeliveryRequestFallback()
     // Send BookingDeliveryRequest to ticket-delivery service
     @HystrixCommand(fallbackMethod = "sendBookingDeliveryRequestFallback")
-    public void sendOrderDeliveryRequest(BookingDeliveryRequest bookingDeliveryRequest) {
+    public void sendBookingDeliveryRequest(BookingDeliveryRequest bookingDeliveryRequest) {
         // Eureka server will find the distribution eureka client - so no need to write the server port
         String ticketDelivery = "http://ticket-delivery";  // http://[service name]
         //String foodDelivery = "http://localhost:9003";
         this.restTemplate.postForLocation(ticketDelivery + "/api/delivery", bookingDeliveryRequest);
-        log.info("End of sending OrderDeliveryRequest");
+        // query for this
+
     }
 
     // Plan B : backup fall back method - Hystrix function : for handle if the method is failed
