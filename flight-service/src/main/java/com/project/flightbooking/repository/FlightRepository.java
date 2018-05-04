@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Repository
-public interface FlightRepository extends CrudRepository<Flight, String> {
+public interface FlightRepository extends CrudRepository<Flight, Long> {
     // Find flight by airport name
     List<Flight> findAllByAirportName(String name );
+
+    // Find flight by name
+    Flight findByName(String name );
 
 }

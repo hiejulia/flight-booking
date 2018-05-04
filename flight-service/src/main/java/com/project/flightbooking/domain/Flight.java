@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigInteger;
 
 
+
 public class Flight extends BaseEntity<BigInteger> {
     // Flight : capacity
 
