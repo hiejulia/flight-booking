@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Position {
+    // Position : lat, long
     private BigDecimal lat;
 
     private BigDecimal longitude;

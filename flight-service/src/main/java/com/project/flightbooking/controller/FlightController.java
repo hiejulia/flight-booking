@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.project.flightbooking.domain.Flight;
+import com.project.flightbooking.dto.Position;
+import com.project.flightbooking.repository.FlightRepository;
+import com.project.flightbooking.service.PositionTrackingExternalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -35,43 +39,11 @@ public class FlightController
 	/*@Autowired
 	private DiscoveryClient discoveryClient;*/
 
-    @RequestMapping(value="/newFlight.html",method=RequestMethod.POST)
-    public String newVehicle(Flight flight)
-    {
-        data.save(flight);
-        return "redirect:/website/flights/list.html";
-    }
-
-    @RequestMapping(value="/deleteFlight.html", method=RequestMethod.POST)
-    public String deleteFlight(@RequestParam Long id)
-    {
-        data.delete(id);
-        return "redirect:/website/flights/list.html";
-    }
-
-    @RequestMapping(value="/newFlight.html",method=RequestMethod.GET)
-    public ModelAndView renderNewFlightForm()
-    {
-        Flight newFlight = new Flight();
-        return new ModelAndView("newFlight","form",newFlight);
-    }
-
-    @RequestMapping(value="/list.html", method=RequestMethod.GET)
-    public ModelAndView flights()
-    {
-        List<Flight> allFlights = data.findAll();
-        return new ModelAndView("allFlights", "flights", allFlights);
-    }
-
     @RequestMapping(value="/flight/{name}")
-    public ModelAndView showFlightByName(@PathVariable("name") String name)
+    public void showFlightByName(@PathVariable("name") String name)
     {
         Flight flight = data.findByName(name);
-
-		/*
-		 * Move this block of code to Different class for the Hystrix
-		*/
-
+        // get the position of the flight by name
         Position lastestPosition=externalService.getLatestPositionFromRemoteMicroService(name);
         //If Successful, then update in our database;
 
@@ -79,13 +51,6 @@ public class FlightController
             flight.setLat(lastestPosition.getLat());
             flight.setLongitude(lastestPosition.getLongitude());
             flight.setLastRecordedPosition(lastestPosition.getTimestamp());
-
         }
-
-        Map<String,Object> model = new HashMap<>();
-        model.put("flight", flight);
-        model.put("position", lastestPosition);
-        return new ModelAndView("flightInfo", "model",model);
     }
-
 }
