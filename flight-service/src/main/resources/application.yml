@@ -28,10 +28,8 @@ eureka:
         instanceInfoReplicationIntervalSeconds: 5
         initialInstanceInfoReplicationIntervalSeconds: 5
         serviceUrl:
-            defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:password@localhost:8761}/eureka/
+            defaultZone: localhost:8761}/eureka/
         fetchRegistry: true
-
-
 
 ---
 # For deployment in Docker containers
