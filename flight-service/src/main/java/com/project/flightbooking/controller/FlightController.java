@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.project.flightbooking.dao.RouteDao;
 import com.project.flightbooking.domain.Flight;
 import com.project.flightbooking.dto.Position;
 import com.project.flightbooking.repository.FlightRepository;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.websocket.server.PathParam;
 
 
 @Controller
@@ -31,6 +33,9 @@ public class FlightController
 {
     @Autowired
     private FlightRepository data;
+
+    @Autowired
+    private RouteDao routeDao;
 
     @Autowired
     private PositionTrackingExternalService externalService;
@@ -52,5 +57,11 @@ public class FlightController
             flight.setLongitude(lastestPosition.getLongitude());
             flight.setLastRecordedPosition(lastestPosition.getTimestamp());
         }
+    }
+
+    @RequestMapping(value="/flight/{from}/{to}")
+    public Flight get(@PathParam("from") String from,
+                        @PathParam("to") String to) {
+        return routeDao.findAirlines(from, to);
     }
 }
