@@ -21,23 +21,28 @@ Online flight reservation system
 + REST API testing using Postman
 + Testing : JUnit, E2E test with Cucumber
 + Event - driven system 
-+ Security 
++ Security : OAuth/ JWT 
 + Log analysis : ELK stack
++ API doc : Swagger 
 
 
 ### Endpoint documentation 
 + Flight service
-    + GET `v1/flights/id` : get one flight by id 
+    + GET `v1/flights/id` : get one flight by id / info 
     + GET `v1/flights` : retrieve all the flights that matches the value of query param 
     + POST `v1/flights` : create new flight 
     + GET `v1/airports` : get a list of airports
     + GET `v1/airports/{airport-name}` : list of flights from this airport 
+    + Search flight by name
+    
 
 + Booking service : User can book a flight ticket and fill the personal information - billing information 
     + POST `v1/flights/{flight-id}/booking ` : 
+    + Get booking details 
 
 + Billing service : User can pay the flight order 
     + GET `v1/flights/{flight-id}/payment`
+    + Make payment(handle payment errors: payment authorization timeout and invalid credit card info )
 
 + User can unsubscribe to the flight ticket info
     + GET `v1/flights/{flight-id}/payment/ubsubscribed`
@@ -106,6 +111,7 @@ Service instances are register with Eureka
 
 ### Project architecture
 + Flight service    
+    + Database : MongoDB 
     + User search for flight based on search query 
 + Catalog service 
 
@@ -114,8 +120,10 @@ Service instances are register with Eureka
     + Database : MySQL 
 + Account service 
 + Booking service 
+    + Database : MongoDB 
     + User book the flight and fill needed information for the flight 
 + Billing service 
+    + Dabase : RDBMS 
     + User pay for flight ticket 
 
 + Subscription service 
