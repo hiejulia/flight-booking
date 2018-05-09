@@ -1,0 +1,15 @@
+server.port: 8001
+
+spring:
+  application.name: config-server
+  cloud.config.server.git:
+    uri: file://${user.home}/vaadin-microservices-demo-config
+    label: master
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/
+    registryFetchIntervalSeconds: 1
+  instance:
+    leaseRenewalIntervalInSeconds: 1
