@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
 @Controller
-@EnableHystrixDashboard
+@EnableHystrixDashboard // enable hystrix dashboard 
+@EnableTurbine // enable turbine
 public class FlightbookingApplication extends SpringBootServletInitializer {
 
 	@RequestMapping("/")
