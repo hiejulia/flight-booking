@@ -1,3 +1,4 @@
+version: '2'
 # RabbitMQ Management UI : http://localhost:15672/ - RabbitMQ image 
 rabbitmq:
   image:  rabbitmq:3.6.1-management
@@ -28,3 +29,54 @@ mongodb:
 
 
 # Redis image 
+
+
+services:
+  checkout_db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=amqpadmin
+      - POSTGRES_PASSWORD=amqpadmin
+    ports:
+      - "54321:5432"
+  delivery_db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=amqpadmin
+      - POSTGRES_PASSWORD=amqpadmin
+    ports:
+      - "54322:5432"
+  reports_db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=amqpadmin
+      - POSTGRES_PASSWORD=amqpadmin
+    ports:
+      - "54323:5432"
+  notifications_db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=amqpadmin
+      - POSTGRES_PASSWORD=amqpadmin
+    ports:
+      - "54324:5432"
+  rabbitmq_master:
+    image: rabbitmq:3-management
+    hostname: rabbitmq_master
+    environment:
+      - RABBITMQ_ERLANG_COOKIE="clusteramqp-01-2017"
+    ports:
+      - "8080:15672"
+    depends_on:
+      - rabbitmq_slave
+  rabbitmq_slave:
+    image: rabbitmq:3-management
+    hostname: rabbitmq_slave
+    environment:
+      - RABBITMQ_ERLANG_COOKIE="clusteramqp-01-2017"
+    ports:
+      - "9080:15672"
+  mail_server:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"

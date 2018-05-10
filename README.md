@@ -17,7 +17,7 @@ Online flight reservation system
 + Batch process 
 + Apache Avro
 + ElasticSearch - Logstash - Kibana 
-+ Container: Docker 
++ Container: Docker  - Docker compose 
 + REST API testing using Postman
 + Testing : JUnit, E2E test with Cucumber
 + Event - driven system 
@@ -51,6 +51,10 @@ Online flight reservation system
 
 
 ### Run the project 
+
++ Run everything : 
+
+
 
 + `docker-compose up` : RabbitMQ port set up (in the docker folder) : it will start the RabbitMQ and MongoDB instance 
 
