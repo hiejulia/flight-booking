@@ -6,6 +6,9 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Entity
+@Table 
 public class Airport extends BaseEntity<String> {
 
     private List<Flight> flights = new ArrayList<>();
