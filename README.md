@@ -93,10 +93,20 @@ Service instances are register with Eureka
 
 
 ### Microservice architecture 
-+ Service discovery and registration 
-+ Config service 
++ Service discovery and registration - Eureka 
+    + Run multiple instances of the same microservices
+    + Look up the host name and the port number by checking discovery service 
+    + Eureka server : `http://localhost:8761/`
++ Config service   
+    + Application configuration to all the other microservices 
+    + Port number, context paths 
+    + Configuration - using GIT 
 
-+ Edge or proxy server (API gateway) - Zuul 
++ Edge or proxy server (API gateway) - Zuul - Gateway service 
+    + Gateway service Zuul 
+    + Proxy all calls to the target microservice 
+    + Solve CORS request - Enable CORS headers on the proxy only
+    + Zuul integrates with Eureka (discovery-service)
 + Load balancing : Ribbon is used for load balancing . It is integrated with the Zuul and Eureka services to provide load balancing for both internal and external calls 
     + Server side load balancing : Zuul server as edge server 
     + Client side load balancing : Ribbon - FeignClient 
@@ -106,7 +116,12 @@ Service instances are register with Eureka
     + Hystrix provides a dashboard UI `locahost:7979`
     + Turbine stream `http://localhost:8989/turbine.stream`
     + Hystrix uses RabbitMQ to send metrics data feed to Turbine 
-+ Eureka server : `http://localhost:8761/`
++ UUA servvice 
+    + User account & Authentication - security of the application 
+    + /token endpoint to retrieve a token 
+    + /user endpoint to validate a token and retrieve the user and its roles
+    + Token in this case are long-lived 
+    
 + Integration
 + Batch processing 
 + Security service 
