@@ -24,6 +24,9 @@ Online flight reservation system
 + Security : OAuth/ JWT 
 + Log analysis : ELK stack
 + API doc : Swagger 
++ DevOps 
++ Service Logging / Monitoring 
+
 
 
 ### Endpoint documentation 
@@ -91,20 +94,61 @@ Service instances are register with Eureka
 
 ### Microservice architecture 
 + Service discovery and registration 
++ Config service 
+
 + Edge or proxy server (API gateway) - Zuul 
 + Load balancing : Ribbon is used for load balancing . It is integrated with the Zuul and Eureka services to provide load balancing for both internal and external calls 
     + Server side load balancing : Zuul server as edge server 
     + Client side load balancing : Ribbon - FeignClient 
 + Circuit breaker : Netflix hystrix 
-+ Monitoring : Netflix Turbine 
++ Distributed tracing : Zipkin, Spring Cloud Sleuth 
++ Monitoring : Netflix Turbine  - and Dashboard 
     + Hystrix provides a dashboard UI `locahost:7979`
     + Turbine stream `http://localhost:8989/turbine.stream`
     + Hystrix uses RabbitMQ to send metrics data feed to Turbine 
 + Eureka server : `http://localhost:8761/`
-
-+ Security: 
++ Integration
++ Batch processing 
++ Security service 
     + Secure microservices architecture 
     + SSL enabled 
+
++ Dependency management : Maven 
++ Data Lake 
++ Testing 
++ Event sourcing 
++ HTTP listener 
++ Containers / Virtual Machines 
++ Cluster Control and Provisioning 
+
++ Admin server 
+
+
++ Microservice service design : contract design and protocol selection 
+    + Contract design 
+        + Simplicity - consumer 
+        + KISS 
+        + Consumer driven contract 
+    + Protocol selection 
+        + HTTP/ SOAP 
+        + Messaging 
+    + Message oriented service 
+        + JMS / AMQP protocol - JSON 
+        + Messaging over HTTP 
+        + Async REST 
+    + HTTP and REST endpoint 
+        + Protocol handling 
+        + Traffic routing 
+        + Load balancing 
+        + Security systems 
+        + HATEOAS
+    + Optimize communication protocol - for communication between service 
+        + Avro 
+        + Protocol Buffers 
+        + Apache Thrift 
+        + Custom binary protocol 
+        + RPC 
++ API documentation : Swagger, RAML, API blueprint 
 
 
 
@@ -160,4 +204,13 @@ Service instances are register with Eureka
 + Go to that directory from root and run docker build command to create docker image("cd eureka","sudo docker build -t eureka .")
 + Go to root directory and run docker compose command("sudo docker-compose up")
 + To stop run "sudo docker-compose down"
+
+
+
+
+
+
+
+
+
 
