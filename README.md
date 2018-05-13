@@ -7,8 +7,12 @@ Online flight reservation system
 + Billing service : operations on billing 
 
 
+
++ 
+
+
 ### Stack 
-+ Microservice architecture : Spring cloud, Netflix Eureka, Ribbon, Zuul, Hystrix, Service discovery, Load Balancing, API gateway, Circuit breaker 
++ Microservice architecture : Spring cloud, Netflix Eureka, Ribbon, Zuul, Hystrix, Service discovery, Load Balancing, API gateway, Circuit breaker (Hystrix)
 + Spring framework : Spring Boot, Spring cloud, Spring data, Spring Stream , Spring Reactor
 + CQRS - Event sourcing 
 + Database : PostgreSQL, MongoDB, Cassandra, MySQL, Neo4J , MySQL
@@ -121,7 +125,7 @@ Service instances are register with Eureka
     + /token endpoint to retrieve a token 
     + /user endpoint to validate a token and retrieve the user and its roles
     + Token in this case are long-lived 
-    
+
 + Integration
 + Batch processing 
 + Security service 
@@ -137,6 +141,8 @@ Service instances are register with Eureka
 + Cluster Control and Provisioning 
 
 + Admin server 
+
++ Spring cloud DataFlow server 
 
 
 + Microservice service design : contract design and protocol selection 
