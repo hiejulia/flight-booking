@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: data-flow-server
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: password
+    url: jdbc:mysql://localhost:3306/spring_cloud?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+  redis:
+    host: localhost
+  cloud:
+    dataflow:
+      features:
+        skipper-enabled: false
+server:
+  port: 9393
