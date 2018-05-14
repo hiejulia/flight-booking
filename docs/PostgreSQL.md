@@ -40,12 +40,17 @@
     + Containment 
     + Key/ element existence 
     + Output JSON 
+    + XML 
+        + insert xml 
+        + Query xml data 
 + Composite datatypes 
-
-
-
+    + Create composite datatype 
 
 ### Triggers
++ DML 
++ DDL 
++ Type of triggers : row-level trigger, statement-level trigger 
+    + Create trigger - execute - modify trigger - remove trigger function - create trigger function - view existing trigger 
 
 
 
