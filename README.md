@@ -26,9 +26,13 @@ Online flight reservation system
 + Testing : JUnit, E2E test with Cucumber
 + Event - driven system 
 + Security : OAuth/ JWT 
-+ Log analysis : ELK stack
++ Log analysis : ELK stack - Logstash - ElasticSearch - Kibana to index logs 
+    + ElasticSearch : distributed, JSON based search and analytics engine designed for horizontal scalability, maximum reliability , easy management 
+    + Logstash : dynamic data collection pipeline with an extension plugin ecosystem and strong elasticsearch synergy
+    + Kibana : visualization of data though UI 
+    + ELK stack architecture 
+        + User view logs from Kibana which is the user interface of elasticsearch cluster -> logstash will listen the application logs and transform those to json format and send to elasticsearch 
 + API doc : Swagger 
-+ DevOps 
 + Service Logging / Monitoring 
 
 
@@ -111,11 +115,12 @@ Service instances are register with Eureka
     + Proxy all calls to the target microservice 
     + Solve CORS request - Enable CORS headers on the proxy only
     + Zuul integrates with Eureka (discovery-service)
+    + Gateway service that provides dynamic routing, monitor, resiliency, security 
 + Load balancing : Ribbon is used for load balancing . It is integrated with the Zuul and Eureka services to provide load balancing for both internal and external calls 
     + Server side load balancing : Zuul server as edge server 
     + Client side load balancing : Ribbon - FeignClient 
 + Circuit breaker : Netflix hystrix 
-+ Distributed tracing : Zipkin, Spring Cloud Sleuth 
++ Distributed tracing : Zipkin, Spring Cloud Sleuth - distributed tracing via logs - distributed tracing system with request visualization 
 + Monitoring : Netflix Turbine  - and Dashboard 
     + Hystrix provides a dashboard UI `locahost:7979`
     + Turbine stream `http://localhost:8989/turbine.stream`
@@ -171,10 +176,20 @@ Service instances are register with Eureka
         + RPC 
 + API documentation : Swagger, RAML, API blueprint 
 
++ ELK stack 
+    + ELK config - Use Docker container to run the ELK stack 
+    1. Run this command on Docker terminal `docker run -d -it --name es -p 9200:9200 -p 9300:9300 -e ES_JAVA_OPTS="-Xms1g -Xmx1g" -m 1500m elasticsearch` : start ElasticSearch container on 9200/9300 port 
+    2. `docker run -d -it --name kibanak --link es:elasticsearch -p 5601:5601 kibana` : start Kibana on 5601 port and it will also link it with ElasticSearch container 
+    3. `docker run -d -it --name logstash -p 5000:5000 logstash -e 'input { tcp { port => 5000 codec => "json" } } output { elasticsearch { hosts => ["192.168.99.100"] index => "micro-%{serviceName}"} }'` : start Logstash container on 5000 port and also create an index with name micro-*
+    4. Checking with `docker ps` command, all the container should be running 
+    + Default port used for docker container is 192.168.99.100 
+
+    + Kibana : check logs on Kibana 
+        + With `Log.info` statement and `logback.xml` configuration we can index and view log from Kibana 
 
 
-
-
++ Zipkin server 
+    + Check the log traces on zipkin server `localhost:9411`
 
 
 
