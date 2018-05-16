@@ -191,7 +191,10 @@ Service instances are register with Eureka
 + Zipkin server 
     + Check the log traces on zipkin server `localhost:9411`
 
-
++ Docker 
+    + Docker containers in this microservice group - Mongo - RabbitMQ - Config-service - Discovery - service , Gateway- service, Command-service, Query-service 
+    + Using docker- compose, run : `docker-compose -f docker-compose.yml up`
+    + To see the running containers `docker ps`
 
 ### Project architecture
 + Flight service    
