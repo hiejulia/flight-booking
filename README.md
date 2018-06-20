@@ -8,14 +8,15 @@ Online flight reservation system
 
 
 
-+ 
++ Booking-client 
++ Auth-server 
 
 
 ### Stack 
 + Microservice architecture : Spring cloud, Netflix Eureka, Ribbon, Zuul, Hystrix, Service discovery, Load Balancing, API gateway, Circuit breaker (Hystrix)
 + Spring framework : Spring Boot, Spring cloud, Spring data, Spring Stream , Spring Reactor
 + CQRS - Event sourcing 
-+ Database : PostgreSQL, MongoDB, Cassandra, MySQL, Neo4J , MySQL
++ Database : PostgreSQL, MongoDB, Cassandra, MySQL - MariaDB, Neo4J , MySQL
 + Caching : Redis
 + Messaging system : RabbitMQ 
 + Batch process 
@@ -105,6 +106,11 @@ Service instances are register with Eureka
     + Run multiple instances of the same microservices
     + Look up the host name and the port number by checking discovery service 
     + Eureka server : `http://localhost:8761/`
+    + Advanced discovery client config 
+    + Enable secure communication between client and server
+    + Config failover and peer - to - peer replication mechanism 
+    + Register instances of client - side application in different zones 
+    
 + Config service   
     + Application configuration to all the other microservices 
     + Port number, context paths 
@@ -121,6 +127,10 @@ Service instances are register with Eureka
     + Client side load balancing : Ribbon - FeignClient 
 + Circuit breaker : Netflix hystrix 
 + Distributed tracing : Zipkin, Spring Cloud Sleuth - distributed tracing via logs - distributed tracing system with request visualization 
+    + tracing mechanism 
+    + trace and span ID 
+    + record time - latency analysis - statistics = zipkin = query and visualize data 
+    + stream = producer of message sent to message broker 
 + Monitoring : Netflix Turbine  - and Dashboard 
     + Hystrix provides a dashboard UI `locahost:7979`
     + Turbine stream `http://localhost:8989/turbine.stream`
@@ -148,6 +158,8 @@ Service instances are register with Eureka
 + Admin server 
 
 + Spring cloud DataFlow server 
+    + `dataflow-service` is a Spring Boot app that loads the local DataFlow server. Port 9393
+    + To interact with the dataflow server, you can donw 
 
 
 + Microservice service design : contract design and protocol selection 
@@ -190,6 +202,7 @@ Service instances are register with Eureka
 
 + Zipkin server 
     + Check the log traces on zipkin server `localhost:9411`
+    + Contain Spring Zipkin Stream server 
 
 + Docker 
     + Docker containers in this microservice group - Mongo - RabbitMQ - Config-service - Discovery - service , Gateway- service, Command-service, Query-service 

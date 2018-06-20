@@ -28,3 +28,4 @@ gosu mongodb mongod "$@"
 echo "restarting with auth on"
 sleep 5
 exec gosu mongodb mongod --auth "$@"
+

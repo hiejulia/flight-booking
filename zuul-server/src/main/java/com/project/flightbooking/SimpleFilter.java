@@ -30,7 +30,7 @@ public class SimpleFilter extends ZuulFilter {
     public boolean shouldFilter() {
         return true;
     }
-    // Main log 
+    // Main log
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();

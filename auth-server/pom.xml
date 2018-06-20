@@ -45,6 +45,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--cloud starter config-->
+		<!--cloud starter eureka-->
+		<!--cloud starter web-->
+		<!--cloud starter oauth2-->
+		<!--cloud starter security-->
 	</dependencies>
 
 	<dependencyManagement>
