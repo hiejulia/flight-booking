@@ -110,7 +110,11 @@ Service instances are register with Eureka
     + Enable secure communication between client and server
     + Config failover and peer - to - peer replication mechanism 
     + Register instances of client - side application in different zones 
-    
+    + Cluster env : zone mechanism - enable zone handling 
+    + Replication and high availability - cluster mechanism - peer to peer replication model - replication mechanism 
+    + Run instances of Eureka 
+    + Enable secure communication between client and server 
+
 + Config service   
     + Application configuration to all the other microservices 
     + Port number, context paths 

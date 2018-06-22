@@ -30,3 +30,11 @@ custom:
   fare:
     service:
       url: http://localhost:8085/fares
+
+
+# Deregistration on shutdown
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false 
+    
