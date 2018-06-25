@@ -20,7 +20,7 @@ error:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://admin:admin123@localhost:8761/eureka/
 
 # HTTP Server
 server:
@@ -37,4 +37,4 @@ endpoints:
   shutdown:
     enabled: true
     sensitive: false 
-    
+

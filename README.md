@@ -114,6 +114,8 @@ Service instances are register with Eureka
     + Replication and high availability - cluster mechanism - peer to peer replication model - replication mechanism 
     + Run instances of Eureka 
     + Enable secure communication between client and server 
+        + Register a secure service 
+        + Enable SSL by generating a self - signed certificate 
 
 + Config service   
     + Application configuration to all the other microservices 

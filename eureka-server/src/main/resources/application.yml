@@ -21,6 +21,13 @@ spring:
   thymeleaf:
     enabled: false     # Disable Thymeleaf
 
+security:
+  basic:
+    enabled: true 
+  user:
+    name: admin
+    password: admin123 
+
 ---
 # For deployment in Docker containers
 spring:
