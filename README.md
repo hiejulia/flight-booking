@@ -215,6 +215,35 @@ Service instances are register with Eureka
     + Using docker- compose, run : `docker-compose -f docker-compose.yml up`
     + To see the running containers `docker ps`
 
+
+
+
+
++ Jenkins 
+    + Continuous deploy using Jenkins Pipeline 
+        + Create docker image to have CD 
+            + Image contains : build project, create docker images, deploy on AWS using ECS container
+            + Using Jenkinsfile - config Job on Jenkins using Pipeline plugin and paste the content of Jenkins file in the Pipeline script box 
+
+
++ Deploy on AWS
+    + Create credentials on AWS 
+    + Create cluster on AWS 
+    + Build deploy container 
+    + Access Jenkins panel 
+    + Create a pipeline job 
+    + Run the job 
+
+
++ Scaling 
+    + NGINX will be configured for browser caching of the static content and load balancer - scale App Gateway and update manually the ports in default.conf - upstream config section 
+
+
+
+
+
+
+
 ### Project architecture
 + Flight service    
     + Database : MongoDB 
