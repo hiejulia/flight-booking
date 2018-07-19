@@ -8,9 +8,15 @@ rabbitmq:
 
 # MongoDB image 
 mongodb:
+  build:
+      context: mongo
   image: mongo:3.4.4
   ports:
     - "27017:27017"
+  deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 
 
 # MySQL instance image 
@@ -29,7 +35,25 @@ mongodb:
 
 
 # Redis image 
+redis:
+    image: redis:4.0.6
+    ports:
+      - "6379"3
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 
+# RabbitMQ
+rabbitmq:
+    image: rabbitmq:3.7-management-alpine
+    ports:
+      - "5672"
+      - "15672"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 
 services:
   checkout_db:
@@ -41,6 +65,12 @@ services:
       - "54321:5432"
     links:
       - eureka
+    depends_on:
+      - mongodb
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
   delivery_db:
     image: postgres
     environment:
