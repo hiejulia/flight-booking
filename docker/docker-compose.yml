@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 # RabbitMQ Management UI : http://localhost:15672/ - RabbitMQ image 
 rabbitmq:
   image:  rabbitmq:3.6.1-management
@@ -39,6 +39,8 @@ services:
       - POSTGRES_PASSWORD=amqpadmin
     ports:
       - "54321:5432"
+    links:
+      - eureka
   delivery_db:
     image: postgres
     environment:
@@ -80,4 +82,20 @@ services:
     image: schickling/mailcatcher
     ports:
       - "1080:1080"
+  eureka:
+    build: ../flightbooking/eureka-server
+    ports:
+      - "8761:8761"
+  zuul:
+    build: ../flightbooking/zuul-server
+    links:
+     - eureka
+    ports:
+      - "8080:8080"
+  turbine:
+    build: ../f
+    links:
+     - eureka
+    ports:
+      - "8989:8989"
   

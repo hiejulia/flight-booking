@@ -215,6 +215,9 @@ Service instances are register with Eureka
     + Using docker- compose, run : `docker-compose -f docker-compose.yml up`
     + To see the running containers `docker ps`
 
+    + Run MongoDB and RabbitMQ 
+        + `docker-compose up -d mongodb rabbitmq`
+
 
 
 

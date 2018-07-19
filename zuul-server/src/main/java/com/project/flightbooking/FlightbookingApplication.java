@@ -35,6 +35,16 @@ public class FlightbookingApplication {
 		SpringApplication.run(FlightbookingApplication.class, args);
 	}
 
+
+	// Add Load Balance
+	@Bean
+    @LoadBalanced
+    RestTemplate loadBalancedRestTemplate() {
+        return new RestTemplate();
+    }
+
+
+
 	// CORS enable config
 	@Bean
 	public CorsFilter corsFilter() {
