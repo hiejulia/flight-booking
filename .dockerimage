@@ -1,0 +1,7 @@
+# Docker will only need our service jar created at project root
+/doc/
+/helm/
+/integration-test/
+/jenkins/
+/src/
+/target/

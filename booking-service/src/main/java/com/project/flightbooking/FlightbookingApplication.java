@@ -8,6 +8,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @EnableEurekaClient // enable eureka client
 @EnableCircuitBreaker // Enable circuit breaker
+@RibbonClient("booking")
 public class FlightbookingApplication {
 
 	public static void main(String[] args) {
