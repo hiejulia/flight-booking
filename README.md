@@ -15,6 +15,7 @@ Online flight reservation system
 
 
 ### Stack 
++ Applied to the principles of the 12 Factor App
 + Microservice architecture : Spring cloud, Netflix Eureka, Ribbon, Zuul, Hystrix, Service discovery, Load Balancing, API gateway, Circuit breaker (Hystrix)
 + Spring framework : Spring Boot, Spring cloud, Spring data, Spring Stream , Spring Reactor
 + CQRS - Event sourcing 
