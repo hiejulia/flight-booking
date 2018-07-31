@@ -9,7 +9,9 @@ Online flight reservation system
 
 
 + Booking-client 
-+ Auth-server 
++ Auth-server : User / Passenger need to register/ login - authorized 
++ Twitter Service : read twitter streams(from Airline branch twitter) and persist them on MongoDB and served them as a REST API(HATEOAS) to other service
++ Search service : Read tweets from twitter service and push it on ElasticSearch as a search engine and produce userful search for these tweet
 
 
 ### Stack 
@@ -25,6 +27,7 @@ Online flight reservation system
 + Container: Docker  - Docker compose 
 + REST API testing using Postman
 + Testing : JUnit, E2E test with Cucumber
+    + JUnit, Mockito, WireMock 
 + Event - driven system 
 + Security : OAuth/ JWT 
 + Log analysis : ELK stack - Logstash - ElasticSearch - Kibana to index logs 
@@ -141,6 +144,7 @@ Service instances are register with Eureka
     + Hystrix provides a dashboard UI `locahost:7979`
     + Turbine stream `http://localhost:8989/turbine.stream`
     + Hystrix uses RabbitMQ to send metrics data feed to Turbine 
+    + Config and collect metrics and tracing from all services
 + UUA servvice 
     + User account & Authentication - security of the application 
     + /token endpoint to retrieve a token 

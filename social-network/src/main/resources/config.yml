@@ -1,0 +1,14 @@
+dbpath: C:/neo4j/db/social-network.db
+
+server:
+  applicationContextPath: /
+  applicationConnectors:
+    - type: http
+      port: 9090
+  adminConnectors:
+    - type: http
+      port: 9091
+  registerDefaultExceptionMappers: true  
+
+swagger:
+  resourcePackage: com.project.resources
