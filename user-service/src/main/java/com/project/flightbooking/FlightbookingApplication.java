@@ -18,6 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableCircuitBreaker
+@EnableAsync
 //@ComponentScan({"com.packtpub.mmj.user", "com.packtpub.mmj.common"})
 public class FlightbookingApplication {
 	private static final Logger LOG = LoggerFactory.getLogger(FlightbookingApplication.class);
