@@ -25,6 +25,12 @@ Online flight reservation system
 + Batch process 
 + Apache Avro
 + ElasticSearch - Logstash - Kibana 
+    + ES GUI plugin 
+    + Install Logstash 
+        + Config logstash 
+    + Install Kibana 
+        + localhost:5601
+    + Docker image ELK stack from Docker hub 
 + Container: Docker  - Docker compose 
 + REST API testing using Postman
 + Testing : JUnit, E2E test with Cucumber
@@ -120,6 +126,7 @@ Service instances are register with Eureka
     + Enable secure communication between client and server 
         + Register a secure service 
         + Enable SSL by generating a self - signed certificate 
+        + SSL is enabled for edge-service only 
 
 + Config service   
     + Application configuration to all the other microservices 
