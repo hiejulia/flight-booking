@@ -23,6 +23,9 @@ public class BookingService {
     // Tax rate in Finland
     private static final Double TAX_RATE = 0.0925;
 
+    private final String inventoryURI = "localhost:8084/inventory/";
+    
+
 
     @Autowired
     private BookingRepository bookingRepository;
@@ -53,6 +56,25 @@ public class BookingService {
         booking1.setUserId(booking.getUserId());
         booking1.setName(booking.getName());
     }
+
+
+    // Update 
+    /**
+     * Create inventory 
+     */
+    private void createInventory(ArrayList<Booking> bookingList) {
+
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.delete(inventoryURI);
+		
+		for(Booking b:bookingList){
+			Inventory newInventory = new Inventory(booking.getId(),1000);
+			restTemplate.postForObject(inventoryURI + "create", newInventory, Inventory.class);
+		}
+		
+		
+	}
+
 
 
     public void delete(String id) throws Exception {

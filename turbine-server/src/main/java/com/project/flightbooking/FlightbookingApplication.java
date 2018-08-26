@@ -18,6 +18,7 @@ import org.springframework.cloud.netflix.turbine.stream.EnableTurbineStream;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@EnableTurbineAmqp
 @EnableTurbineStream
 @EnableEurekaClient
 public class FlightbookingApplication {
