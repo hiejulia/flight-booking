@@ -1,0 +1,125 @@
+# Copyright 2016 International Systems Research Co. (ISR).
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+spring:
+    profiles: production
+    application:
+        name: application-account
+    cloud:
+        config:
+            uri: http://172.17.0.1:8080/config
+            failFast: true
+            password: uiiui747h74f4e74eu45748bb44rfn7845nhd74ndeundnd63rgff6r
+            username: user
+            
+---
+spring:
+    profiles: development
+    application:
+        name: account-service
+    jpa:
+        show-sql: true
+        generate-ddl: true
+        hibernate:
+            use-new-id-generator-mappings: true
+    datasource:
+        hikari:
+            maximum-pool-size: 20
+            pool-name: datasource-development
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+        password: 
+        url: jdbc:mysql://localhost:3306/account-service?serverTimezone=UTC
+        driver-class-name: com.mysql.jdbc.Driver
+security:
+    user:
+        password: none
+    oauth2:
+        authorization:
+            check-token-access: isAuthenticated()
+            token-key-access: permitAll()
+        client:
+            client-id: none
+            client-secret: none
+server:
+    port: 8082
+    context-path: /account
+    address: 0.0.0.0
+management:
+    context-path: /admin
+application:
+    account:
+        service:
+            populate-database: false
+            
+
+---
+spring:
+    profiles: integration
+    application:
+        name: application-account
+    cloud:
+        config:
+            uri: http://127.0.0.1:8080/config
+            failFast: true
+            password: uiiui747h74f4e74eu45748bb44rfn7845nhd74ndeundnd63rgff6r
+            username: user
+eureka:
+    instance:
+        protocol: http
+        ip-address: 127.0.0.1
+        port: 8081
+        context-path: /registry
+        prefer-ip-address: true
+        user: user
+        password: bebgb58b45ufb84h4tfb8bs74yytg59p0u0iuf584fbriufn48f4nf7
+    client:
+        service-url:
+            defaultZone: ${eureka.instance.protocol}://${eureka.instance.user}:${eureka.instance.password}@${eureka.instance.ip-address}:${eureka.instance.port}${eureka.instance.context-path}/eureka/
+    
+---
+spring:
+    profiles: test
+    application:
+        name: application-account
+    jpa:
+        show-sql: true
+        generate-ddl: true
+        database: h2
+        hibernate:
+            use-new-id-generator-mappings: true
+    datasource:
+        hikari:
+            maximum-pool-size: 20
+            pool-name: datasource-development
+        type: com.zaxxer.hikari.HikariDataSource
+security:
+    user:
+        password: none
+server:
+    port: 8082
+    context-path: /account
+    address: 0.0.0.0
+application:
+    account:
+        service:
+            populate-database: false
+eureka:
+    client:
+        enabled: false
+    
+---
+spring:
+    profiles:
+        active: development, integration
