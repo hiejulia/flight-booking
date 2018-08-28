@@ -2,19 +2,24 @@
 Online flight reservation system 
 
 + User service : operations on User service 
-+ Booking service : Flight service and User service to perform operations on booking. It will use flight search and its associated tabl
+    + Database : 
++ Booking service : Flight service and User service to perform operations on booking. It will use flight search and its associated table
+    + Database :
 + Flight service : operations and searching based on criteria, providing association between Flight and flight trip 
+    + Database : MySQL
 + Billing service : operations on billing 
+    + Database : MongoDB
 + Passenger service 
     + Database : Cassandra 
 
 
 + Booking-client 
+    
 + Auth-server : User / Passenger need to register/ login - authorized 
 + Twitter Service : read twitter streams(from Airline branch twitter) and persist them on MongoDB and served them as a REST API(HATEOAS) to other service
 + Search service : Read tweets from twitter service and push it on ElasticSearch as a search engine and produce userful search for these tweet
 + social-network-service : send flights and passengers data to Agency social network 
-    + Neo4J database 
+    + Database : Neo4J
 
 ### Stack 
 + Applied to the principles of the 12 Factor App
@@ -111,7 +116,9 @@ Service instances are register with Eureka
 
 
 
-
++ Install and run 
+    + MongoDB : `docker run --name mongo -p 27017:27017 -d mongo`
+    + Redis : `dockewr run --name redis -p 6379:6379 -d redis`
 
 ### Microservice architecture 
 + Service discovery and registration - Eureka 
