@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: sleuth
+  sleuth:
+    sampler:
+      percentage: 0.8
