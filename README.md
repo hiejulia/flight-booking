@@ -50,6 +50,9 @@ Online flight reservation system
     + Kibana : visualization of data though UI 
     + ELK stack architecture 
         + User view logs from Kibana which is the user interface of elasticsearch cluster -> logstash will listen the application logs and transform those to json format and send to elasticsearch 
+    + Distributed tracing and centralized log management
+        + Spring Cloud sleuth & Zipkin 
+        + Config Kibanan and view the logs 
 + API doc : Swagger 
 + Service Logging / Monitoring 
 
