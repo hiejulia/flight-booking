@@ -9,10 +9,8 @@ class ScrapingResult:
         self.url = None
         self.summary = None
 
-
 LANGUAGE = "english"
 SENTENCES_COUNT = 2
-
 
 class Scraper:
 
