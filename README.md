@@ -1,6 +1,5 @@
 # flight-booking
 Online flight reservation system 
-
 + User service : operations on User service 
     + Database : 
 + Booking service : Flight service and User service to perform operations on booking. It will use flight search and its associated table
@@ -11,6 +10,8 @@ Online flight reservation system
     + Database : MongoDB
 + Passenger service 
     + Database : Cassandra 
++ Organisation service 
+    + Database : 
 
 
 + Booking-client 
@@ -79,6 +80,12 @@ Online flight reservation system
 + User can unsubscribe to the flight ticket info
     + GET `v1/flights/{flight-id}/payment/ubsubscribed`
 
++ Passenger service 
+    + GET `v1/passengers`
+    + GET `v1/passengers/id`
+    + POST `v1/passengers`: create one passenger
+    + GET `v1/passengers/organisations/id` : find passengers by organisation 
++ Organisation service 
 
 
 
