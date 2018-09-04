@@ -8,6 +8,7 @@ Online flight reservation system
     + Database : MySQL
 + Billing service : operations on billing 
     + Database : MongoDB
+    + Messaging : RabbitMQ (queue: billingQueue)
 + Passenger service 
     + Database : Cassandra 
 + Organisation service 
