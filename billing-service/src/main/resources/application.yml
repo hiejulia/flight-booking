@@ -1,0 +1,47 @@
+endpoints:
+  enabled: true
+  sensitive: false
+info:
+  java:
+    source: "${java.version}"
+logging:
+  level:
+    root: INFO
+management:
+  health:
+    mongo:
+      enabled: true
+  info:
+    build:
+      enabled: true
+    git:
+      mode: full
+server:
+  port: 8097
+spring:
+  application:
+    name: Billing service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/billing-service
+  rabbitmq:
+    host: localhost
+---
+spring:
+  profiles: kub-aks
+server:
+  port: 8080
+logging:
+  level:
+    root: INFO
+management:
+  info:
+    build:
+      enabled: true
+    git:
+      mode: simple
+endpoints:
+  env:
+    keys-to-sanitize: .*password.*,.*secret.*,.*username.*,.*token.*,.*spring.data.mongodb.uri.*,.*SPRING_DATA_MONGODB_URI.*,.*spring.rabbitmq.username.*,.*SPRING_RABBITMQ_USERNAME.*,.*spring.rabbitmq.password.*,.*SPRING_RABBITMQ_PASSWORD.*
+  configprops:
+    keys-to-sanitize: .*password.*,.*secret.*,.*username.*,.*token.*,.*spring.data.mongodb.uri.*,.*SPRING_DATA_MONGODB_URI.*,.*spring.rabbitmq.username.*,.*SPRING_RABBITMQ_USERNAME.*,.*spring.rabbitmq.password.*,.*SPRING_RABBITMQ_PASSWORD.*
