@@ -68,7 +68,8 @@ Online flight reservation system
     + GET `v1/airports` : get a list of airports
     + GET `v1/airports/{airport-name}` : list of flights from this airport 
     + Search flight by name
-    
+    + Search flight by code 
+        + POST `v1/airports/flights/code`
 
 + Booking service : User can book a flight ticket and fill the personal information - billing information 
     + POST `v1/flights/{flight-id}/booking ` : 
