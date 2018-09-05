@@ -55,7 +55,8 @@ Online flight reservation system
     + Distributed tracing and centralized log management
         + Spring Cloud sleuth & Zipkin 
         + Config Kibanan and view the logs 
-+ API doc : Swagger 
++ API documentation : Swagger - Curl -
++ API UI testing: Postman 
 + Service Logging / Monitoring 
 
 
@@ -226,7 +227,14 @@ Service instances are register with Eureka
         + Custom binary protocol 
         + RPC 
 + API documentation : Swagger, RAML, API blueprint 
-
++ API versioning 
+    + URL segment
+    + Accept header 
+    + Custom Header 
++ Authentication - Authorization 
+    + 2 legged authentication
+    + Basic HTTP authentication
+    + 3 legged authentication
 + ELK stack 
     + ELK config - Use Docker container to run the ELK stack 
     1. Run this command on Docker terminal `docker run -d -it --name es -p 9200:9200 -p 9300:9300 -e ES_JAVA_OPTS="-Xms1g -Xmx1g" -m 1500m elasticsearch` : start ElasticSearch container on 9200/9300 port 
@@ -237,6 +245,14 @@ Service instances are register with Eureka
 
     + Kibana : check logs on Kibana 
         + With `Log.info` statement and `logback.xml` configuration we can index and view log from Kibana 
+        + Query with Kibana 
+            + Key-value search 
+            + Boolean operator - type:radar AND status:500
+            + Request UUID tracking 
+                + Query for a request ID header 
+                + dynamic log verbosity 
++ Grafana - Graphite - StatsD 
++ Alert and Monitor tools : 
 
 
 + Zipkin server 
@@ -333,7 +349,9 @@ Service instances are register with Eureka
 
 
 
-
+### Microservices architecture 
+#### Debug tools 
++ Curl and jq
 
 
 
