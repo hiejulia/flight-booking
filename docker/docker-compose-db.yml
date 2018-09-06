@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  # Test db 
+  first-db:
+    image: mongo
+    container_name: mongo-db
+    ports:
+     - 27017:27017
+    networks:
+      - esnet
+
+  # 
+  search-engine:
+   image: solr:latest
+   ports:
+     - "8983:8983"
+   volumes:
+     - data:/opt/solr/server/solr/mycores
+   entrypoint:
+     - docker-entrypoint.sh
+     - solr-precreate
+     - mycore
+
+  auth-db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    networks:
+      - esnet
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1
+      POSTGRES_DB: auth_db
+
+networks:
+  esnet:
+    driver: bridge
+
+volumes:
+  data:
