@@ -40,6 +40,10 @@ Online flight reservation system
     + Install Kibana 
         + localhost:5601
     + Docker image ELK stack from Docker hub 
+        + Docker UI : Rancher - manage docker container by UI 
+            + Install Rancher : `sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server`
+            + Goto : `http://ip:8080`
+            + Custom (EC2 - Azure, AWS )- connect server with rancher server 
 + Container: Docker  - Docker compose 
 + REST API testing using Postman
 + Testing : JUnit, E2E test with Cucumber
