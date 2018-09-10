@@ -1,49 +1,105 @@
 package com.project.flightbooking.domain;
 
 
-public class User extends BaseEntity<String> {
+import org.neo4j.graphdb.Direction;
+import org.springframework.data.neo4j.annotation.GraphId;
+import org.springframework.data.neo4j.annotation.NodeEntity;
+import org.springframework.data.neo4j.annotation.RelatedTo;
 
-    private String address;
+import java.util.HashSet;
+import java.util.Set;
 
-    private String city;
 
-    private String phoneNo;
+@NodeEntity
+public class User {
+    @GraphId
+    private Long id;
 
-    public User(String id, String name, String address, String city, String phoneNo) {
-        super(id, name);
-        this.address = address;
-        this.city = city;
-        this.phoneNo = phoneNo;
+    private String firstName;
+
+    private String lastName;
+
+    private String email;
+
+    // Address facturation - new HashSet<>() - @RelateTo
+    @RelatedTo(type="FACTURE", direction= Direction.OUTGOING)
+    private Set<Adress> adressesFacturation = new HashSet<>();
+
+    @RelatedTo(type="TRAVAIL", direction= Direction.OUTGOING)
+    private Set<Adress> adressesTravail = new HashSet<>();
+
+    @RelatedTo(type="HABITE", direction= Direction.OUTGOING)
+    private Set<Adress> adressesDomicile = new HashSet<>();
+
+    public User() {
     }
 
-    public String getAddress() {
-        return address;
+    public void addAdresseFacturation(Adress adress) {
+        if (adressesFacturation == null) {
+            adressesFacturation = new HashSet<>();
+        }
+        adressesFacturation.add(adress);
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void addAdresseTravail(Adress adress) {
+        if (adressesTravail == null) {
+            adressesTravail = new HashSet<>();
+        }
+        adressesTravail.add(adress);
     }
 
-    public String getCity() {
-        return city;
+    public void addAdresseDomicile(Adress adress) {
+        if (adressesDomicile == null) {
+            adressesDomicile = new HashSet<>();
+        }
+        adressesDomicile.add(adress);
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public Long getId() {
+        return id;
     }
 
-    public String getPhoneNo() {
-        return phoneNo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
+    public String getFirstName() {
+        return firstName;
     }
-    @Override
-    public String toString() {
-        return new StringBuilder("{id: ").append(id).append(", name: ")
-                .append(name).append(", address: ").append(address)
-                .append(", city: ").append(city)
-                .append(", phoneNo: ").append(phoneNo).append("}").toString();
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Set<Adress> getAdressesFacturation() {
+        return adressesFacturation;
+    }
+
+    public void setAdressesFacturation(Set<Adress> adressesFacturation) {
+        this.adressesFacturation = adressesFacturation;
+    }
+
+    public Set<Adress> getAdressesTravail() {
+        return adressesTravail;
+    }
+
+    public void setAdressesTravail(Set<Adress> adressesTravail) {
+        this.adressesTravail = adressesTravail;
+    }
+
+    public Set<Adress> getAdressesDomicile() {
+        return adressesDomicile;
+    }
+
+    public void setAdressesDomicile(Set<Adress> adressesDomicile) {
+        this.adressesDomicile = adressesDomicile;
     }
 }

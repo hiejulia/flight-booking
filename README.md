@@ -1,7 +1,7 @@
 # flight-booking
 Online flight reservation system 
 + User service : operations on User service 
-    + Database : 
+    + Database : Neo4J
 + Booking service : Flight service and User service to perform operations on booking. It will use flight search and its associated table
     + Database :
 + Flight service : operations and searching based on criteria, providing association between Flight and flight trip 
