@@ -8,7 +8,7 @@ import java.math.BigInteger;
 
 
 
-public class Flight extends BaseEntity<BigInteger> {
+public class Flight extends BaseEntity<BigInteger> implements Serializable {
     // Flight : capacity
 
     private int capacity;

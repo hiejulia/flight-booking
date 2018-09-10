@@ -20,6 +20,7 @@ import org.springframework.context.annotation.Bean;
 @EnableEurekaClient
 @EnableCircuitBreaker
 @EnableFeignClients // Enable FeignClients
+@EnableCaching
 public class FlightbookingApplication {
 	private static final Logger LOG = LoggerFactory.getLogger(FlightbookingApplication.class);
 

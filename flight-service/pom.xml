@@ -135,6 +135,15 @@
             <artifactId>monitor-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+		<!--Add distributed cache-->
+		<dependency> 
+   <groupId>org.springframework.boot</groupId> 
+   <artifactId>spring-boot-starter-cache</artifactId> 
+</dependency> 
+<dependency> 
+   <groupId>com.hazelcast</groupId> 
+   <artifactId>hazelcast-spring</artifactId>              
+</dependency>
 
 	</dependencies>
 

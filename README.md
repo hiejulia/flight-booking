@@ -6,6 +6,9 @@ Online flight reservation system
     + Database :
 + Flight service : operations and searching based on criteria, providing association between Flight and flight trip 
     + Database : MySQL
+    + Distributed Caching layer : Hazelcast
+    + Flight search : ElasticSearch `localhost:9200/flights/external/_bulk`
+    `localhost:9200/flights/_search?q=*&pretty`
 + Billing service : operations on billing 
     + Database : MongoDB
     + Messaging : RabbitMQ (queue: billingQueue)

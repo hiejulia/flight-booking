@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public interface FlightRepository extends CrudRepository<Flight, Long> {
     // Find flight by airport name
+    @Cacheable("flightsByName")
     List<Flight> findAllByAirportName(String name );
 
     // Find flight by name
