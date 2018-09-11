@@ -16,6 +16,15 @@ public interface FlightRepository extends CrudRepository<Flight, Long> {
     List<Flight> findAllByAirportName(String name );
 
     // Find flight by name
+
+
     Flight findByName(String name );
+
+     
+    @CacheEvict(cacheNames="flightsCache", allEntries=true) 
+    Fligth save(Fligth flight); 
+     
+    @CacheEvict(cacheNames="flightsCache", allEntries=true) 
+    void delete(Flight flight); 
 
 }

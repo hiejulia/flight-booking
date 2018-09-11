@@ -196,7 +196,10 @@ Service instances are register with Eureka
 
 + Dependency management : Maven 
 + Data Lake 
-+ Testing 
++ Testing microservices
+    + Deploy all of them and test them in an end-to-end fashion 
+    + Mock external dependencies in unit/integration test 
+    
 + Event sourcing 
 + HTTP listener 
 + Containers / Virtual Machines 
