@@ -4,5 +4,5 @@ import com.mycompany.product.entity.Product;
  
 public interface ProductRepository extends ElasticsearchRepository<Product, String> { 
  
-   List<Product> findByCatId(int catId); 
+   
 } 
