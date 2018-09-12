@@ -165,6 +165,7 @@ Service instances are register with Eureka
     + Application configuration to all the other microservices 
     + Port number, context paths 
     + Configuration - using GIT 
+    + Vault - cmd - add new values to the server - run from docker container 
 
 + Edge or proxy server (API gateway) - Zuul - Gateway service 
     + Gateway service Zuul 
