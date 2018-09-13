@@ -20,6 +20,11 @@ Online flight reservation system
 + Account service 
     + Database : Cassandra 
 
++ Cash flow service
+    + Database : PostgreSQL
+    + Caching - Message queue : Redis
+    + Index tool : Elastic search 
+
 
 + Booking-client 
     
