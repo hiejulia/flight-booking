@@ -23,7 +23,10 @@ Online flight reservation system
 + Cash flow service
     + Database : PostgreSQL
     + Caching - Message queue : Redis
-    + Index tool : Elastic search 
++ Bid service 
+    + Database : PostgreSQL 
+    + Caching : Redis 
+    + Index tool : ElasticSearch 
 
 
 + Booking-client 
