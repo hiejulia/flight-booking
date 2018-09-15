@@ -33,7 +33,10 @@ Online flight reservation system
     
 + Auth-server : User / Passenger need to register/ login - authorized 
 + Twitter Service : read twitter streams(from Airline branch twitter) and persist them on MongoDB and served them as a REST API(HATEOAS) to other service
-+ Search service : Read tweets from twitter service and push it on ElasticSearch as a search engine and produce userful search for these tweet
+    + Database : MongoDB 
++ Search twitter service : Read tweets from twitter service and push it on ElasticSearch as a search engine and produce userful search for these tweet
+    + Database : 
+    + Index engine : ElasticSearch
 + social-network-service : send flights and passengers data to Agency social network 
     + Database : Neo4J
 
