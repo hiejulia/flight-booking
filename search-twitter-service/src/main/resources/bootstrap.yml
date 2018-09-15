@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: search-twitter-service
+  cloud:
+    config:
+      uri: http://${ADDRESS}:8888

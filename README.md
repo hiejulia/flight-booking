@@ -36,7 +36,7 @@ Online flight reservation system
     + Database : MongoDB 
 + Search twitter service : Read tweets from twitter service and push it on ElasticSearch as a search engine and produce userful search for these tweet
     + Database : 
-    + Index engine : ElasticSearch
+    + Index engine : Solr
 + social-network-service : send flights and passengers data to Agency social network 
     + Database : Neo4J
 
