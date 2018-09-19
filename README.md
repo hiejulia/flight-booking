@@ -40,6 +40,10 @@ Online flight reservation system
 + social-network-service : send flights and passengers data to Agency social network 
     + Database : Neo4J
 
++ Booking Request Service : passenger will confirm the flight booking request or cancel request 
+    + Caching : Redis 
+    + Database : Neo4J(BookingRequest node, Passenger node)
+
 ### Stack 
 + Applied to the principles of the 12 Factor App
 + Microservice architecture : Spring cloud, Netflix Eureka, Ribbon, Zuul, Hystrix, Service discovery, Load Balancing, API gateway, Circuit breaker (Hystrix)
