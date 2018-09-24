@@ -51,7 +51,7 @@ Online flight reservation system
 + CQRS - Event sourcing 
 + Database : PostgreSQL, MongoDB, Cassandra, MySQL - MariaDB, Neo4J , MySQL
 + Caching : Redis
-+ Messaging system : RabbitMQ 
++ Messaging system : RabbitMQ , Kafka(Zookeeper)
 + Batch process 
 + Apache Avro
 + ElasticSearch - Logstash - Kibana 
