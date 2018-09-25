@@ -1,0 +1,53 @@
+info:
+  application:
+    name: "Flight service slack integration"
+    kotlin:
+      target: 1.2
+
+users:
+  admin:
+    username: "admin"
+    password: "admin"
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    beans:
+      enabled: true
+    health:
+      enabled: true
+      show-details: always
+    conditions:
+      enabled: true
+    configprops:
+      enabled: true
+    env:
+      enabled: true
+    info:
+      enabled: true
+    loggers:
+      enabled: true
+    metrics:
+      enabled: true
+    scheduledtasks:
+      enabled: true
+    httptrace:
+      enabled: true
+    mappings:
+      enabled: true
+    prometheus:
+      enabled: true
+
+
+# Config Slack
+slack:
+  baseUrl: "https://hooks.slack.com/services"
+  channelWebhook: "/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
+  logLevel: "FULL"
+
+
+  # hook slack 
