@@ -43,6 +43,9 @@ redis:
       replicas: 1
       restart_policy:
         condition: on-failure
+    network:
+      default:
+        ipv4_address: 172.10.0.40
 
 # RabbitMQ
 rabbitmq:
