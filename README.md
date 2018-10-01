@@ -28,7 +28,8 @@ Online flight reservation system
     + Caching : Redis 
     + Index tool : ElasticSearch 
 
-
++ Back up service : Back up microservice database Schedule distributed 
+    + 
 + Booking-client 
     
 + Auth-server : User / Passenger need to register/ login - authorized 
