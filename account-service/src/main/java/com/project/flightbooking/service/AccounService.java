@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
+@Service
 public class AccountServiceImpl {
 
     @Value("${spring.kafka.topic.userCreated}")
@@ -14,6 +15,9 @@ public class AccountServiceImpl {
     private AccountRepository AccountRepository;
 
     private Sender sender;
+
+    @Autowired
+	private TaskProducer taskProducer;
 
     @Autowired
     UserServiceImpl(UserRepository userRepository, Sender sender) {
@@ -27,11 +31,20 @@ public class AccountServiceImpl {
         User createdUser = userRepository.save(input);
         // Send to Account create queue 
         sender.send(ACCOUNT_CREATED_TOPIC, createdUser);
+        // send email
+        sendEmail(input.getEmail());
         return createdUser;
     }
 
     @Override
     public Iterable<User> findAll() {
         return userRepository.findAll();
+    }
+
+    private void sendEmail(String e){
+        TaskMessage t = new TaskMessage();
+        t.setEmailId(e);
+        taskProducer.sendNewTask(t);
+
     }
 }
