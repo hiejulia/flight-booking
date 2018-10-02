@@ -17,6 +17,12 @@ public class Flight extends BaseEntity<BigInteger> implements Serializable {
 
     private BigDecimal longitude;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date createTime;
+    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date modifyTime;
+
     public Flight(@JsonProperty("name") String name, @JsonProperty("id") BigInteger id, @JsonProperty("capacity") int capacity,@JsonProperty("lat") BigDecimal lat, @JsonProperty("longitude") BigDecimal longitude) {
         super(id, name);
         this.capacity = capacity;
