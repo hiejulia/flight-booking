@@ -20,6 +20,9 @@ public class BillingService {
     private ElectionRepository electionRepository;
 
     @Autowired
+    private MongoTemplate mongoTemplate;
+
+    @Autowired
     public ElectionService(ElectionRepository electionRepository) {
         this.electionRepository = electionRepository;
     }
@@ -48,6 +51,16 @@ public class BillingService {
         electionRepository.save(election);
         logger.debug("Election {} saved to MongoDB", election.toString());
     }
+
+    // update billing model 
+
+    public void updateBilling(Billing billing) throws Exception{
+        mongoTemplate.updateMulti(
+            new Query(Criteria.where("billingId.id").is(billing.getId())),
+            new Update().set("billingId.$.name", billing.getName()), Billing.class
+        );
+    }
+
 
 
 }
