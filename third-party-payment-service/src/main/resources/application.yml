@@ -1,0 +1,15 @@
+server:
+  port: 9002
+
+# spring.cloud.stream.bindings.input [Consumer] -> MQ name
+spring:
+  cloud:
+    stream:
+      bindings:
+        input: payments
+
+# Spring string injection
+com:
+  flight-booking:
+    flight:
+      payment: http://localhost:9001
