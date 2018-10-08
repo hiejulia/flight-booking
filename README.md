@@ -73,6 +73,9 @@ Online flight reservation system
 + REST API testing using Postman
 + Testing : JUnit, E2E test with Cucumber
     + JUnit, Mockito, WireMock 
+    + Unit test
+    + Integration testing 
+        + Docker - Fail safe plugin 
 + Event - driven system 
 + Security : OAuth/ JWT 
 + Log analysis : ELK stack - Logstash - ElasticSearch - Kibana to index logs 
@@ -88,6 +91,10 @@ Online flight reservation system
 + API documentation : Swagger - Curl -
 + API UI testing: Postman 
 + Service Logging / Monitoring 
+
++ Correlation ID for service call for all services 
+    + REST call 
+    + Zipkin and Sleuth
 
 
 
