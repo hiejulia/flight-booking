@@ -1,0 +1,15 @@
+--- 
+# For deployment in Docker containers 
+spring: 
+  profiles: docker 
+  name : checkin-service
+ 
+server: 
+  port: 8087
+ 
+eureka: 
+  instance: 
+    preferIpAddress: true 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eureka:8761/eureka/ 

@@ -67,6 +67,9 @@ Online flight reservation system
             + Goto : `http://ip:8080`
             + Custom (EC2 - Azure, AWS )- connect server with rancher server 
 + Container: Docker  - Docker compose 
+    + In each service - Docker image is built to production deploy - Docker maven plugin is added to pom.xml 
+    + Update Spring profile with Docker
+    + Config Docker-maven-plugin 
 + REST API testing using Postman
 + Testing : JUnit, E2E test with Cucumber
     + JUnit, Mockito, WireMock 
