@@ -1,0 +1,30 @@
+node {
+
+
+     // Fetch change 
+   stage('Fetch changes') {
+      git 'https://github.com/hiejulia/flight-booking.git'
+   }
+
+
+    // Build image 
+   stage('Build image') {
+      if (isUnix()) {
+         sh "mvn -f ./catalog-service/pom.xml  -Pdockerimage docker:build"
+      } else {
+         echo "Not ready for windows"
+      }
+   }
+
+    // Set up to AWS ECS 
+   stage('Deploy ECS') {
+      echo "TODO deploy on AWS... "
+
+
+
+   }
+}
+
+
+
+// fetch change 
